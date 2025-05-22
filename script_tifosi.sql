@@ -22,7 +22,7 @@ CREATE TABLE client (
 
 CREATE TABLE marque (
     id_marque INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL UNIQUE
+    nom VARCHAR(50) NOT NULL 
 );
 
 CREATE TABLE focaccia (
@@ -66,7 +66,7 @@ CREATE TABLE achete (
     id_client INT NOT NULL,
     date_achat Date NOT NULL,
     PRIMARY KEY (id_menu, id_client),
-    CONSTRAINT fk_achete_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu)
+    CONSTRAINT fk_achete_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu),
     CONSTRAINT fk_achete_client FOREIGN KEY (id_client) REFERENCES client(id_client)
 )
 
