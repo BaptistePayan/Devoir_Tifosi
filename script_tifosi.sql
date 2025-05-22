@@ -42,6 +42,48 @@ CREATE TABLE boisson (
     nom VARCHAR(50) NOT NULL UNIQUE
 )
 
+-- Table relationnels avec clé étrangère
 
+CREATE TABLE comprend (
+    id_focaccia INT NOT NULL,
+    id_ingredient INT NOT NULL,
+    quantite INT NOT NULL,
+    PRIMARY KEY (id_focaccia, id_ingredient),
+    CONSTRAINT fk_comprend_focaccia FOREIGN KEY (id_focaccia) REFERENCES focaccia(id_focaccia),
+    CONSTRAINT fk_comprend_ingredient FOREIGN KEY (id_ingredient) REFERENCES ingredient(id_ingredient)
+)
+
+CREATE TABLE est_constitue (
+    id_menu INT NOT NULL,
+    id_focaccia INT NOT NULL,
+    PRIMARY KEY (id_menu, id_focaccia),
+    CONSTRAINT fk_est_constitue_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu),
+    CONSTRAINT fk_est_constitue_focaccia FOREIGN KEY (id_focaccia) REFERENCES focaccia(id_focaccia)
+);
+
+CREATE TABLE achete (
+    id_menu INT NOT NULL,
+    id_client INT NOT NULL,
+    date_achat Date NOT NULL,
+    PRIMARY KEY (id_menu, id_client),
+    CONSTRAINT fk_achete_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu)
+    CONSTRAINT fk_achete_client FOREIGN KEY (id_client) REFERENCES client(id_client)
+)
+
+CREATE TABLE contient (
+    id_menu INT NOT NULL,
+    id_boisson INT NOT NULL,
+    PRIMARY KEY (id_menu, id_boisson),
+    CONSTRAINT fk_contient_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu),
+    CONSTRAINT fk_contient_boisson FOREIGN KEY (id_boisson) REFERENCES boisson(id_boisson)
+);
+
+CREATE TABLE appartient(
+id_boisson INT NOT NULL,
+id_marque INT NOT NULL,
+PRIMARY KEY (id_boisson, id_marque),
+CONSTRAINT fk_appartient_boisson FOREIGN KEY (id_boisson) REFERENCES boisson(id_boisson),
+CONSTRAINT fk_appartient_marque FOREIGN KEY (id_marque) REFERENCES marque(id_marque)
+)
 
 
