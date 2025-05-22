@@ -10,7 +10,7 @@ FLUSH PRIVILEGES;
 
 CREATE TABLE ingredient (
     id_ingredient INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL UNIQUE
+    nom_ingredient VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE client (
@@ -22,13 +22,14 @@ CREATE TABLE client (
 
 CREATE TABLE marque (
     id_marque INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL 
+    nom_marque VARCHAR(50) NOT NULL 
 );
 
 CREATE TABLE focaccia (
     id_focaccia INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL UNIQUE,
-    prix DECIMAL(5,2) NOT NULL
+    nom_foccacia VARCHAR(50) NOT NULL UNIQUE,
+    prix DECIMAL(5,2) NOT NULL,
+    ingrédients VARCHAR(200) NOT NULL 
 );
 
 CREATE TABLE menu (
@@ -39,7 +40,8 @@ CREATE TABLE menu (
 
 CREATE TABLE boisson (
     id_table INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(50) NOT NULL UNIQUE
+    nom_boisson VARCHAR(50) NOT NULL UNIQUE,
+    marque VARCHAR(50) NOT NULL
 )
 
 -- Table relationnels avec clé étrangère
@@ -85,5 +87,40 @@ PRIMARY KEY (id_boisson, id_marque),
 CONSTRAINT fk_appartient_boisson FOREIGN KEY (id_boisson) REFERENCES boisson(id_boisson),
 CONSTRAINT fk_appartient_marque FOREIGN KEY (id_marque) REFERENCES marque(id_marque)
 )
+
+-- Importation des données dans mes tables
+
+LOAD DATA LOCAL INFILE '/Users/user/Desktop/Tifosi_devoir_SQL/focaccia.csv'
+INTO TABLE focaccia
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id_focaccia, nom_foccacia, prix, ingrédients);
+
+LOAD DATA LOCAL INFILE '/Users/user/Desktop/Tifosi_devoir_SQL/ingredient.csv'
+INTO TABLE ingredient
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id_ingredient, nom_ingredient);
+
+LOAD DATA LOCAL INFILE '/Users/user/Desktop/Tifosi_devoir_SQL/boisson.csv'
+INTO TABLE boisson
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id_boisson, nom_boisson, marque);
+
+LOAD DATA LOCAL INFILE '/Users/user/Desktop/Tifosi_devoir_SQL/marque.csv'
+INTO TABLE marque
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id_marque, nom_marque);
+
 
 
