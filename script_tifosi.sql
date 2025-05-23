@@ -18,7 +18,7 @@ CREATE TABLE client (
     nom VARCHAR(50) NOT NULL ,
     email VARCHAR(150) NOT NULL UNIQUE,
     code_postal INT NOT NULL 
-)
+);
 
 CREATE TABLE marque (
     id_marque INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,7 +90,7 @@ CONSTRAINT fk_appartient_marque FOREIGN KEY (id_marque) REFERENCES marque(id_mar
 
 -- Importation des données dans mes tables
 
-LOAD DATA LOCAL INFILE '/Applications/XAMPP/xamppfiles/temp/focaccia.csv'
+LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/focaccia.csv'
 INTO TABLE focaccia
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
@@ -98,7 +98,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (id_focaccia, nom_focaccia, prix, ingrédients);
 
-LOAD DATA LOCAL INFILE '/Applications/XAMPP/xamppfiles/temp/ingredient.csv'
+LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/ingredient.csv'
 INTO TABLE ingredient
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
@@ -106,7 +106,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (id_ingredient, nom_ingredient);
 
-LOAD DATA LOCAL INFILE '/Applications/XAMPP/xamppfiles/temp/boisson.csv'
+LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/boisson.csv'
 INTO TABLE boisson
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
