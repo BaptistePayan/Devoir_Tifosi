@@ -11,6 +11,7 @@ FLUSH PRIVILEGES;
 CREATE TABLE ingredient (
     id_ingredient INT AUTO_INCREMENT PRIMARY KEY,
     nom_ingredient VARCHAR(50) NOT NULL UNIQUE
+    quantite INT NOT NULL
 );
 
 CREATE TABLE client (
@@ -104,7 +105,7 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(id_ingredient, nom_ingredient);
+(id_ingredient, nom_ingredient, quantite);
 
 LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/boisson.csv'
 INTO TABLE boisson
