@@ -27,7 +27,7 @@ CREATE TABLE marque (
 
 CREATE TABLE focaccia (
     id_focaccia INT AUTO_INCREMENT PRIMARY KEY,
-    nom_foccacia VARCHAR(50) NOT NULL UNIQUE,
+    nom_focaccia VARCHAR(50) NOT NULL UNIQUE,
     prix DECIMAL(5,2) NOT NULL,
     ingrédients VARCHAR(200) NOT NULL 
 );
@@ -39,10 +39,10 @@ CREATE TABLE menu (
 );
 
 CREATE TABLE boisson (
-    id_table INT AUTO_INCREMENT PRIMARY KEY,
+    id_boisson INT AUTO_INCREMENT PRIMARY KEY,
     nom_boisson VARCHAR(50) NOT NULL UNIQUE,
     marque VARCHAR(50) NOT NULL
-)
+);
 
 -- Table relationnels avec clé étrangère
 
@@ -53,7 +53,7 @@ CREATE TABLE comprend (
     PRIMARY KEY (id_focaccia, id_ingredient),
     CONSTRAINT fk_comprend_focaccia FOREIGN KEY (id_focaccia) REFERENCES focaccia(id_focaccia),
     CONSTRAINT fk_comprend_ingredient FOREIGN KEY (id_ingredient) REFERENCES ingredient(id_ingredient)
-)
+);
 
 CREATE TABLE est_constitue (
     id_menu INT NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE achete (
     PRIMARY KEY (id_menu, id_client),
     CONSTRAINT fk_achete_menu FOREIGN KEY (id_menu) REFERENCES menu(id_menu),
     CONSTRAINT fk_achete_client FOREIGN KEY (id_client) REFERENCES client(id_client)
-)
+);
 
 CREATE TABLE contient (
     id_menu INT NOT NULL,
@@ -86,7 +86,7 @@ id_marque INT NOT NULL,
 PRIMARY KEY (id_boisson, id_marque),
 CONSTRAINT fk_appartient_boisson FOREIGN KEY (id_boisson) REFERENCES boisson(id_boisson),
 CONSTRAINT fk_appartient_marque FOREIGN KEY (id_marque) REFERENCES marque(id_marque)
-)
+);
 
 -- Importation des données dans mes tables
 
@@ -96,7 +96,7 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(id_focaccia, nom_foccacia, prix, ingrédients);
+(id_focaccia, nom_focaccia, prix, ingrédients);
 
 LOAD DATA LOCAL INFILE '/Users/user/Desktop/Tifosi_devoir_SQL/ingredient.csv'
 INTO TABLE ingredient
