@@ -37,7 +37,7 @@ SELECT nom_focaccia
 FROM focaccia
 WHERE ingrédients LIKE '%ail%';
 
--- ingrédients inutilisé
+-- Ingrédients inutilisé
 SELECT nom_ingredient
 FROM ingredient
 WHERE NOT EXISTS (

@@ -24,7 +24,7 @@ CREATE TABLE marque (
     id_marque INT AUTO_INCREMENT PRIMARY KEY,
     nom_marque VARCHAR(50) NOT NULL 
 );
--- ajout manuel des ingrédients car mal placé dans le fichier CSV
+-- Ajout manuel des ingrédients car mal placé dans le fichier CSV
 CREATE TABLE focaccia (
     id_focaccia INT AUTO_INCREMENT PRIMARY KEY,
     nom_focaccia VARCHAR(50) NOT NULL UNIQUE,

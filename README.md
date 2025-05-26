@@ -10,4 +10,4 @@ vous trouverez 3 fichiers :
 
 Signalement : plusieurs fichiers n'étaient pas conforme pour l'injection des données car problème de ',' ou de logique de lecture par rapport aux consignes
 
-Toutes les requêtes ont été testé et validé, me renvoyant toujours un résultat
+Toutes les requêtes ont été testé et validé sur l'extension MySQL SHELL, me renvoyant toujours un résultat complet
