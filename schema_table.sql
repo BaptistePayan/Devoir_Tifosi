@@ -11,7 +11,6 @@ FLUSH PRIVILEGES;
 CREATE TABLE ingredient (
     id_ingredient INT AUTO_INCREMENT PRIMARY KEY,
     nom_ingredient VARCHAR(50) NOT NULL UNIQUE
-    quantite INT NOT NULL
 );
 
 CREATE TABLE client (
@@ -25,7 +24,7 @@ CREATE TABLE marque (
     id_marque INT AUTO_INCREMENT PRIMARY KEY,
     nom_marque VARCHAR(50) NOT NULL 
 );
-
+-- ajout manuel des ingrédients car mal placé dans le fichier CSV
 CREATE TABLE focaccia (
     id_focaccia INT AUTO_INCREMENT PRIMARY KEY,
     nom_focaccia VARCHAR(50) NOT NULL UNIQUE,
@@ -89,40 +88,7 @@ CONSTRAINT fk_appartient_boisson FOREIGN KEY (id_boisson) REFERENCES boisson(id_
 CONSTRAINT fk_appartient_marque FOREIGN KEY (id_marque) REFERENCES marque(id_marque)
 );
 
--- Importation des données dans mes tables
 
-LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/focaccia.csv'
-INTO TABLE focaccia
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(id_focaccia, nom_focaccia, prix, ingrédients);
-
-LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/ingredient.csv'
-INTO TABLE ingredient
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(id_ingredient, nom_ingredient, quantite);
-
-LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/boisson.csv'
-INTO TABLE boisson
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(id_boisson, nom_boisson, marque);
-
-LOAD DATA INFILE '/Applications/XAMPP/xamppfiles/temp/marque.csv'
-INTO TABLE marque
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-(id_marque, nom_marque);
-
-
+-- Clés etrangères a revoir avec un mentor, besoins de précision pour mieux comprendre
 
 
